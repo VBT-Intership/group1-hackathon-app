@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -16,23 +17,65 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          onPressed: (){
-            // Add a new data -> Firestore.instance.collection('books').document().setData({ 'title': 'berke', 'author': 'dew' });
-            
-            /*
-            Get a specific data
-            Firestore.instance.collection('books').document('H7GayJ5Tj8EHqndSHKn9').get().then((DocumentSnapshot ds){
-              print(ds["title"]);
-            });
-            */
+        body: Container(
+            child: Center(
+      child: LogInPage(),
+    )));
+  }
+}
 
-          
+class LogInPage extends StatefulWidget {
+  @override
+  _LogInPageState createState() => _LogInPageState();
+}
 
-          },
-          child: Text("click"),
-        ),
+class _LogInPageState extends State<LogInPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+              margin: const EdgeInsets.only(top: 100),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    ' Welcome !',
+                    style: GoogleFonts.carterOne(
+                        fontSize: 60, color: Color(0xFF05454F)),
+                  ),
+                ],
+              )),
+          Container(
+            child: Center(
+                child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(400)),
+                child: Image.asset(
+                  'assets/image/aa.png',
+                  width: 400,
+                  height: 400,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            )),
+          ),
+          RaisedButton(
+            padding: EdgeInsets.all(20.0),
+            onPressed: () {},
+            child: Text(
+              "Start !",
+              style: TextStyle(fontSize: 35.0),
+            ),
+            shape: OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            )),
+            color: Color(0xFF05454F),
+          )
+        ],
       ),
     );
   }
