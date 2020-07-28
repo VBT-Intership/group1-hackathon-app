@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathonapp/components/my_app_bar.dart';
 import 'package:hackathonapp/constants/StaticColors.dart';
 import 'package:hackathonapp/screens/common/map_screen.dart';
 import 'package:hackathonapp/screens/patient/patient_task_screen.dart';
@@ -21,17 +22,7 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: StaticColors.colorWhite,
-        centerTitle: true,
-        toolbarHeight: 60,
-        leadingWidth: 75,
-        leading: Icon(Icons.menu),
-        actions: [
-         Padding(padding: EdgeInsets.only(right: 25),child:  Icon(Icons.info),),
-        ],
-        title: Text("Sağlık Asistanı"),
-      ),
+      appBar: MyAppBar(),
       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );

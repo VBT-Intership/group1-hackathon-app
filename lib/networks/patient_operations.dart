@@ -29,6 +29,18 @@ class PatientOperations{
     return list;
   }
 
+      /// This function get all data by patient key
+  Future<dynamic> listRecordsByNurse(String nurseKey) async{
+    var list = [];
+    final firestoreInstance = Firestore.instance;
+    await firestoreInstance.collection("patients").where("nurseKey", isEqualTo:nurseKey).getDocuments().then((value){
+      value.documents.forEach((element) { 
+        list.add(element.data);
+      });
+    });
+    return list;
+  }
+
   /// This function get one record by document id
   Future<dynamic> getRecord(String documentId) async{
     var list = [];
