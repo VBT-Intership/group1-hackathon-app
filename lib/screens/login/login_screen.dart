@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackathonapp/constants/UserType.dart';
+import 'package:hackathonapp/screens/patient/patient_home_screen.dart';
+import 'package:hackathonapp/store/flutter_store.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -7,11 +10,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  FlutterStore flutterStore = new FlutterStore();
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: ListView(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
               margin: const EdgeInsets.only(top: 100),
@@ -41,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           RaisedButton(
             padding: EdgeInsets.all(20.0),
-            onPressed: () {},
+            onPressed: () => _loginOperation("username", "password"),
             child: Text(
               "Start !",
               style: TextStyle(fontSize: 35.0),
@@ -54,6 +61,16 @@ class _LoginScreenState extends State<LoginScreen> {
           )
         ],
       ),
+    );
+  }
+
+  /// Burada login islemi yapilir
+  void _loginOperation(String username, String password) {
+    flutterStore.setUserType(UserType.PATIENT);
+    flutterStore.setUserId("h8L955qYiBLwOWLbbAjZ");
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PatientHomeScreen()),
     );
   }
 }

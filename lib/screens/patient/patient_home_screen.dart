@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hackathonapp/constants/StaticColors.dart';
 import 'package:hackathonapp/screens/common/map_screen.dart';
+import 'package:hackathonapp/screens/patient/patient_task_screen.dart';
 
 class PatientHomeScreen extends StatefulWidget {
   @override
@@ -7,11 +9,12 @@ class PatientHomeScreen extends StatefulWidget {
 }
 
 class _PatientHomeScreenState extends State<PatientHomeScreen> {
+
   int _currentIndex = 0;
   final List<Widget> _children = [
     Text("test1"),
     MapScreen(),
-    Text("test3"),
+    PatientTaskScreen(),
     Text("test4"),
   ];
 
@@ -19,7 +22,15 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hello App"),
+        backgroundColor: StaticColors.colorWhite,
+        centerTitle: true,
+        toolbarHeight: 60,
+        leadingWidth: 75,
+        leading: Icon(Icons.menu),
+        actions: [
+         Padding(padding: EdgeInsets.only(right: 25),child:  Icon(Icons.info),),
+        ],
+        title: Text("Sağlık Asistanı"),
       ),
       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavigationBar(),
@@ -36,6 +47,7 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
           _currentIndex = value;
         });
       },
+      selectedItemColor: StaticColors.colorBlue,
       items: [
         BottomNavigationBarItem(
           icon: new Icon(Icons.home),

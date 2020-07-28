@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hackathonapp/constants/UserType.dart';
 import 'package:hackathonapp/networks/location_operations.dart';
+import 'package:hackathonapp/store/flutter_store.dart';
 import 'package:location/location.dart';
 
 class MapScreen extends StatefulWidget {
@@ -9,6 +11,8 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  FlutterStore flutterStore = new FlutterStore();
+
   GoogleMapController mapController;
   Location location = new Location();
 
@@ -24,8 +28,17 @@ class _MapScreenState extends State<MapScreen> {
       print("Location is found.");
     });
 
+    /* Konumu Guncellemek Icin Kodlar */
     location.onLocationChanged.listen((LocationData currentLocation) {
-     print("burada save ettir.");
+      if (flutterStore.getUserId() != null) {
+        if (flutterStore.getUserType() == UserType.PATIENT) {
+          _locationOperations.updateLocation(
+              "patients", flutterStore.getUserId(), latitude, longitude);
+        } else {
+          _locationOperations.updateLocation(
+              "patients", flutterStore.getUserId(), latitude, longitude);
+        }
+      }
     });
   }
 
@@ -66,13 +79,6 @@ class _MapScreenState extends State<MapScreen> {
             CameraPosition(target: LatLng(24.150, -110.32), zoom: 10),
         onMapCreated: _onMapCreated,
         myLocationEnabled: true,
-      ),
-      RaisedButton(
-        onPressed: () {
-          _locationOperations.updateLocation(
-              "patiens", "IBPTeQlSMEqVbhUr4FWj", latitude, longitude);
-        },
-        child: Text("dedededede"),
       ),
     ]);
   }
