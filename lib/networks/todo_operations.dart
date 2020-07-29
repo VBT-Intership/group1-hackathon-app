@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hackathonapp/models/Todo.dart';
 
 class TodoOperations{
   
@@ -21,6 +22,18 @@ class TodoOperations{
       "completed": statu
     }).then((value) {
       print("Completed status is saved succesfully");
+    });
+  }
+
+    /// This function add a new todo data
+  void addNewRecord(Todo todo) {
+    final firestoreInstance = Firestore.instance;
+    firestoreInstance.collection("todos").add({
+      "title": todo.title,
+      "description": todo.description,
+      "date": todo.date
+    }).then((value) {
+      print("Todo added succesfully");
     });
   }
 

@@ -3,6 +3,7 @@ import 'package:hackathonapp/components/my_app_bar.dart';
 import 'package:hackathonapp/components/my_drawer_menu.dart';
 import 'package:hackathonapp/constants/StaticColors.dart';
 import 'package:hackathonapp/screens/common/map_screen.dart';
+import 'package:hackathonapp/screens/nurse/nurse_task_screen.dart';
 
 class NurseHomeScreen extends StatefulWidget {
   @override
@@ -12,9 +13,9 @@ class NurseHomeScreen extends StatefulWidget {
 class _NurseHomeScreenState extends State<NurseHomeScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Text("test1"),
+    Center(child: Text("Bakıcı Dashboard"),),
     MapScreen(),
-    Text("123"),
+    NurseTaskScreen(),
   ];
 
   @override
