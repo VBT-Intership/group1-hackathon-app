@@ -35,6 +35,7 @@ dependencies:
   geoflutterfire: ^2.1.0
   tflite: 1.0.4
   camera: 0.5.7+4
+  
 
 dev_dependencies:
   flutter_test:

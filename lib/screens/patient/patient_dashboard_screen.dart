@@ -46,12 +46,15 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
 
   _myCard(String title) {
     return Card(
+      margin: EdgeInsets.all(20),
+      elevation: 10,
       child: Container(
         height: 100,
         child: Center(
           child: Text(
             "$title",
             textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.w500),
           ),
         ),
       ),
