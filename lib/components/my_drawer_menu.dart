@@ -14,7 +14,7 @@ class MyDrawerMenu extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     height: 125,
-                    child: Image.asset("assets/images/logo.png"),
+                    child: Center(child: Text("Sağlık Asistanı"),),
                   ),
                 ],
               ),
@@ -26,6 +26,30 @@ class MyDrawerMenu extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Anasayfa'),
+            trailing: Icon(Icons.arrow_right),
+            onTap: () {
+
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.info_outline),
+            title: Text('Nedir ?'),
+            trailing: Icon(Icons.arrow_right),
+            onTap: () {
+
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.question_answer),
+            title: Text('Nasıl Kullanılır ?'),
+            trailing: Icon(Icons.arrow_right),
+            onTap: () {
+
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.exit_to_app),
+            title: Text('Çıkış'),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
 

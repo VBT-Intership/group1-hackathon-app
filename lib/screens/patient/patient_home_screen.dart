@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hackathonapp/components/my_app_bar.dart';
+import 'package:hackathonapp/components/my_drawer_menu.dart';
 import 'package:hackathonapp/constants/StaticColors.dart';
 import 'package:hackathonapp/screens/common/map_screen.dart';
+import 'package:hackathonapp/screens/patient/patient_ml_screen.dart';
 import 'package:hackathonapp/screens/patient/patient_task_screen.dart';
 
 class PatientHomeScreen extends StatefulWidget {
@@ -16,7 +18,7 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
     Text("test1"),
     MapScreen(),
     PatientTaskScreen(),
-    Text("test4"),
+    PatientMlScreen(),
   ];
 
   @override
@@ -24,6 +26,7 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
     return Scaffold(
       appBar: MyAppBar(),
       body: _buildBody(),
+      drawer: MyDrawerMenu(),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }

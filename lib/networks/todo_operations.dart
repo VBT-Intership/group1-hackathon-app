@@ -14,4 +14,14 @@ class TodoOperations{
     return list;
   }
 
+  /// This function update location data
+  void updateCompletedStatus(String documentKey, String statu) {
+    final firestoreInstance = Firestore.instance;
+    firestoreInstance.collection("todos").document(documentKey).updateData({
+      "completed": statu
+    }).then((value) {
+      print("Completed status is saved succesfully");
+    });
+  }
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathonapp/networks/patient_operations.dart';
 import 'package:hackathonapp/networks/todo_operations.dart';
+import 'package:hackathonapp/screens/patient/patient_task_detail_screen.dart';
 import 'package:hackathonapp/store/flutter_store.dart';
 
 class PatientTaskScreen extends StatefulWidget {
@@ -41,22 +42,28 @@ class _PatientTaskScreenState extends State<PatientTaskScreen> {
       itemCount: taskList.length,
       itemBuilder: (context, index) {
         var item = taskList[index];
-        return _buildCard(item["title"],item["description"], item["date"]);
+        return _buildCard(item["title"], item["description"], item["date"], item);
       },
     );
   }
 
-  _buildCard(String title,String description, String date) {
+  _buildCard(String title, String description, String date, dynamic item) {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Card(
-      child: ListTile(
-        leading: Icon(Icons.toc),
-        title: Text(title),
-        subtitle: Text(description),
-        trailing: Text(date),
+        child: ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PatientTaskDetailScreen(item)),
+            );
+          },
+          leading: Icon(Icons.toc),
+          title: Text(title),
+          subtitle: Text(description),
+          trailing: Text(date),
+        ),
       ),
-    ),
     );
   }
 
